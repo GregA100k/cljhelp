@@ -1,0 +1,9 @@
+test of cljs setup
+
+cljs.jar file is needed but being left out of source control
+
+compile command
+===============
+java -cp cljs.jar;src clojure.main build.clj
+
+
