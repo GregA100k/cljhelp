@@ -6,10 +6,10 @@
  " help from https://gist.github.com/kohyama/6192253"
   [t]
   (let [spot (dom/get-element "spot")
-        ;el (dom/get-element "text")
         el (dom/element "textarea" {:cols 50 :rows 10})
         highlighted-value t
-        set-the-valude (dom/set-text el highlighted-value)
+        message (str t " is not in the list of functions")
+        set-the-value (dom/set-text el message)
        ]
         (dom/append spot el)
     ))
@@ -22,9 +22,16 @@
     (dom/append spot ifr)
   ))
 
+(def function-list [{:function-name "page" :url "https://clojure.org/api/cheatsheet"}])
+(defn find-url [t]
+  (first (filter #(= t (:function-name %)) function-list))
+  )
+
 (defn handle-highlight [t]
-  (let [txt (aget t "data")]
-  (if (= txt "page") (redirect-to-cheatsheet "https://clojure.org/api/cheatsheet")
+  (let [txt (aget t "data")
+        function-url (find-url txt)
+       ]
+  (if (:function-name function-url) (redirect-to-cheatsheet (:url function-url))
     (paste-value txt))))
   
 (defn current-tab
