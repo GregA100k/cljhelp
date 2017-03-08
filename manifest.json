@@ -4,8 +4,8 @@
  "description": "Clojure Help",
  "manifest_version": 2,
  "browser_action": {
-   "default_title": "Selected Text",
-   "default_icon": "online.png",
+   "default_title": "Clojure Help",
+   "default_icon": "crappyHandDrawnLambda.png",
    "default_popup": "popup.html" 
  },
  "permissions": [
